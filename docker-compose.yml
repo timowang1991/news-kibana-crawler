@@ -4,6 +4,7 @@ services:
     news-kibana-crawler:
         container_name: news-kibana-crawler
         image: node:16-alpine3.12
+        env_file: .env
         ports:
             - 3000:3000
         volumes:
