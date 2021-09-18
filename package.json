@@ -1,0 +1,27 @@
+{
+  "name": "news-kibana-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js --ext js",
+    "start": "node src/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timowang1991/news-kibana-crawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timowang1991/news-kibana-crawler/issues"
+  },
+  "homepage": "https://github.com/timowang1991/news-kibana-crawler#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "nodemon": "^2.0.12"
+  }
+}
