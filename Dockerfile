@@ -2,10 +2,14 @@ FROM node:16-alpine3.12
 
 WORKDIR /app
 
-COPY ["package.json", "package-lock.json", "./"]
+COPY package*.json ./
 
-RUN npm install --production
+RUN npm install
 
 COPY . .
 
-CMD ["node", "src/server.js"]
+RUN npm run test
+
+RUN npm prune --production
+
+CMD ["npm", "start"]
