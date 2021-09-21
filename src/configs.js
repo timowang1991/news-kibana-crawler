@@ -108,9 +108,39 @@ const urls = {
     ],
 };
 
+const providerBlueIndices = {
+    三立: 1,
+    民視: 1,
+    新頭殼: 1,
+    壹電視: 1,
+
+    非凡: 2,
+
+    中央社: 3,
+    Yahoo: 3,
+    自立: 3,
+    華視: 3,
+    台視: 3,
+    BBC: 3,
+    // Temp 3
+    NOW: 3,
+    東森: 3,
+    鏡週刊: 3,
+    信傳媒: 3,
+
+    TVBS: 4,
+    聯合: 4,
+
+    CTWANT: 5,
+    中時: 5,
+    中廣: 5,
+    旺報: 5,
+};
+
 const configs = {
     urls,
     index: 'yahoo-news',
+    providerBlueIndices,
 };
 
 module.exports = configs;

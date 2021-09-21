@@ -3,11 +3,12 @@ const axios = require('axios');
 const get = require('lodash.get');
 const { CronJob } = require('cron');
 
+const configs = require('./configs');
+const { getBlueIndexByDisplayName } = require('./blue-index-utils');
+
 const {
     ELASTIC_SEARCH_ENDPOINT,
 } = process.env;
-
-const configs = require('./configs');
 
 console.log('ELASTIC_SEARCH_ENDPOINT', ELASTIC_SEARCH_ENDPOINT);
 
@@ -66,6 +67,8 @@ async function run() {
                         positionCol: stream.positionCol,
                         positionName: stream.positionName,
                         displayTime: new Date().toISOString(),
+                        blueIndex:
+                            getBlueIndexByDisplayName(streamItem.content.provider.displayName),
                     },
                     ...streamItem,
                 },
