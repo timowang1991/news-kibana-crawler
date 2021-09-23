@@ -48,7 +48,7 @@ async function run() {
                 index: configs.index,
                 body: {
                     query: {
-                        match: { id: streamItem.id },
+                        match: { 'id.keyword': streamItem.id },
                     },
                 },
             }).catch((err) => {
