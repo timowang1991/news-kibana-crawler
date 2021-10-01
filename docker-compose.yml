@@ -10,6 +10,8 @@ services:
         volumes:
             - ./:/src
         working_dir: /src
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
         command:
             - /bin/sh
             - -c
