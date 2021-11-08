@@ -135,6 +135,7 @@ const providerBlueIndices = {
     中時: 5,
     中廣: 5,
     旺報: 5,
+    中天: 5,
 };
 
 const configs = {
