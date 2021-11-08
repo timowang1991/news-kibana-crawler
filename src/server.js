@@ -7,7 +7,7 @@ const configs = require('./configs');
 const { getBlueIndexByDisplayName } = require('./blue-index-utils');
 
 const {
-    ELASTIC_SEARCH_ENDPOINT,
+    ELASTIC_SEARCH_ENDPOINT = 'http://host.docker.internal:9200',
 } = process.env;
 
 console.log('ELASTIC_SEARCH_ENDPOINT', ELASTIC_SEARCH_ENDPOINT);
@@ -73,7 +73,7 @@ async function run() {
                     ...streamItem,
                 },
             }).catch((err) => {
-                console.error(`client.index stream ${stream} streamItem ${streamItem} error ${err}`);
+                console.error(`client.index stream ${stream} streamItem ${JSON.stringify(streamItem, null, 4)} error ${err}`);
                 return {};
             });
         })).flat();
