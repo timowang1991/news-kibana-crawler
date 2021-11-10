@@ -61,6 +61,7 @@ async function run() {
             }
             return client.index({
                 index: configs.index,
+                id: streamItem.id,
                 body: {
                     metaForKb: {
                         position: stream.position,
