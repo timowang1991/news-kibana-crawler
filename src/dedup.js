@@ -52,23 +52,29 @@ async function lookForDedupDocs(contentId) {
 }
 
 async function dedup() {
-    const totalDocs = await client.search({
-        index,
-        body: {},
-    }).then((res) => res.body.hits.total.value);
+    const today = new Date();
+    const date = new Date('2021-09-19');
 
-    const batchSize = 100;
-    const loopEnd = Math.ceil(totalDocs / batchSize);
-    for (let i = 0; i < loopEnd; i += 1) {
+    while (date <= today) {
+        const isoDate = date.toISOString();
+        const isoDateShort = isoDate.slice(0, isoDate.indexOf('T'));
+
         const docs = await client.search({
             index,
             body: {
                 track_total_hits: true,
-                from: i * batchSize,
-                size: batchSize,
+                query: {
+                    range: {
+                        'metaForKb.displayTime': {
+                            lte: isoDateShort,
+                            gte: isoDateShort,
+                        },
+                    },
+                },
+                size: 10000,
             },
         }).then(({ body }) => {
-            console.log('-------- i =', i, JSON.stringify(body, null, 4));
+            console.log('-------- date =', date, JSON.stringify(body, null, 4));
             if (body && Array.isArray(body.hits.hits)) {
                 return body.hits.hits;
             }
@@ -76,6 +82,8 @@ async function dedup() {
         });
 
         await Promise.all(docs.map((doc) => lookForDedupDocs(doc._source.id)));
+
+        date.setDate(date.getDate() + 1);
     }
 }
 
