@@ -24,7 +24,7 @@ async function migration() {
                 },
             },
         }).catch((err) => {
-            const errMsg = `migrate error: ${err}, providerName: ${providerName}, should have blueIndex ${blueIndex}`
+            const errMsg = `migrate error: ${err}, providerName: ${providerName}, should have blueIndex ${blueIndex}`;
             console.error(errMsg);
             return errMsg;
         });
